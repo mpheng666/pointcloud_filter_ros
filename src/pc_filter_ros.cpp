@@ -1,4 +1,4 @@
-#include "pointcloud_filter_ros/project_inliers.hpp"
+#include "pointcloud_filter_ros/pc_filter_ros.hpp"
 
 namespace pc_filter_ros {
     PCFilterROS::PCFilterROS(ros::NodeHandle& nh)
@@ -38,11 +38,19 @@ namespace pc_filter_ros {
         coefficients->values[5] = cone_param_.axis_direction_z;
         coefficients->values[6] = cone_param_.opening_angle_rad;
 
-        pcl::ProjectInliers<pcl::PointXYZ> proj;
+        pcl::ModelOutlierRemoval<pcl::PointXYZ> proj;
         proj.setModelType(pcl::SACMODEL_CONE);
         proj.setInputCloud(input);
-        proj.setModelCoefficients(coefficients);
+        proj.setThreshold(0.5);
+        proj.setModelCoefficients(*coefficients);
         proj.filter(*cloud_projected);
+
+        // pcl::ProjectInliers<pcl::PointXYZ> proj;
+        // proj.setModelType(pcl::SACMODEL_CONE);
+        // proj.setInputCloud(input);
+        // proj.setModelCoefficients(coefficients);
+        // proj.setCopyAllData(true);
+        // proj.filter(*cloud_projected);
 
         pcl::PCLPointCloud2 point_cloud2;
         pcl::toPCLPointCloud2(*cloud_projected, point_cloud2);

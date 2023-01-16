@@ -1,5 +1,5 @@
-#ifndef PC_FILTER_ROS_PROJECT_INLIERS_HPP_
-#define PC_FILTER_ROS_PROJECT_INLIERS_HPP_
+#ifndef PC_FILTER_ROS_PC_FILTER_ROS_HPP_
+#define PC_FILTER_ROS_PC_FILTER_ROS_HPP_
 
 #include <ros/ros.h>
 
@@ -10,6 +10,7 @@
 #include <pcl/point_cloud.h>
 #include <pcl/point_types.h>
 #include <pcl_conversions/pcl_conversions.h>
+#include <pcl/filters/model_outlier_removal.h>
 
 #include <pcl_ros/point_cloud.h>
 #include <sensor_msgs/PointCloud2.h>

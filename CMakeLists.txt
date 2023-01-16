@@ -31,14 +31,14 @@ catkin_package(
 )
 
 # pointcloud_filter_ros
-add_executable(project_inliers_node src/project_inliers.cpp src/project_inliers_node.cpp)
-target_link_libraries(project_inliers_node
+add_executable(pc_filter_ros_node src/pc_filter_ros.cpp src/pc_filter_ros_node.cpp)
+target_link_libraries(pc_filter_ros_node
   ${roscpp_LIBRARIES}
   ${catkin_LIBRARIES}
   ${PCL_LIBRARIES}
 )
 
-# install(TARGETS project_inliers_node
+# install(TARGETS pc_filter_ros_node
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
 
