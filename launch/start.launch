@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+
+    <node pkg="pointcloud_filter_ros" name="project_inliers_node" type="project_inliers_node" >
+        <rosparam command="load" file="$(find pointcloud_filter_ros)/config/param.yaml" />
+        <remap from="~/input_cloud" to="/lidar3d_pointcloud" />
+    </node>
+
+</launch>
